@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        function LoginControl(){
+            const [IsLoggedIn, setLogin]=React.useState(false);
+            const onLogin = () => {
+                setLogin((current)=>!current);  
+            };
+            return (
+                <div> 
+                    <button 
+                        style={{
+                            width:100,
+                            backgroundColor: "white",
+                            padding: "10px 20px",
+                            borderRadius: 18
+                        }}
+                        onClick={onLogin}>{IsLoggedIn ? "로그아웃" : "로그인"}
+                    </button>
+                    {IsLoggedIn===false ? "  로그인 해주세요!" : "  환영합니다!"}
+                </div>
+            );
+        }
+
+        function App(){
+            return (
+                <div>
+                    <LoginControl />
+                </div>
+            )
+        }
+
+        const root=document.getElementById("root");
+        ReactDOM.render(<App />, root);
+    </script>
+</html>
+    
